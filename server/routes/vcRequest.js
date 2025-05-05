@@ -1,9 +1,9 @@
-// File: routes/vcRequest.js
+
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 
-// Mock list of accepted credential types
+
 const ACCEPTED_CREDENTIAL_TYPES = ['PID', 'QEAA'];
 
 router.post('/vc-request-SD-JWT', async (req, res) => {
@@ -21,7 +21,7 @@ router.post('/vc-request-SD-JWT', async (req, res) => {
         return res.status(400).json({ error: 'Incorrect credential type presented' });
       }
   
-      // Simulated digest check
+ 
       const allValid = decoded._sd.every((digest, i) => {
         const reSigned = jwt.sign(disclosures[i], SECRET_KEY);
         return digest === reSigned;
@@ -39,7 +39,7 @@ router.post('/vc-request-SD-JWT', async (req, res) => {
   router.post('/vc-request-JSON-LD', async (req, res) => {
     const { presentedVC, requestedType, format } = req.body;
   
-    // Step 1: Basic validation
+ 
     if (!ACCEPTED_CREDENTIAL_TYPES.includes(requestedType)) {
       return res.status(400).json({ error: 'Unsupported credential type requested' });
     }
@@ -49,14 +49,14 @@ router.post('/vc-request-SD-JWT', async (req, res) => {
     }
   
     try {
-      // Step 2: Check type field in the VC
+    
       const { type, credentialSubject, proof } = presentedVC;
   
       if (!Array.isArray(type) || !type.includes(requestedType)) {
         return res.status(400).json({ error: 'Incorrect credential type in JSON-LD VC' });
       }
   
-      // Step 3: Basic structural checks
+   
       if (!credentialSubject || !credentialSubject.id) {
         return res.status(400).json({ error: 'Missing or invalid credentialSubject' });
       }
@@ -65,10 +65,7 @@ router.post('/vc-request-SD-JWT', async (req, res) => {
         return res.status(400).json({ error: 'Missing or invalid proof in JSON-LD VC' });
       }
   
-      // (Optional) Step 4: Simulate verifying JWS signature (skip real crypto for now)
-      // In production, use jsonld-signatures to verify the actual Linked Data Proof.
-  
-      // Step 5: All checks passed
+
       return res.json({
         message: 'JSON-LD VC verified',
         subject: credentialSubject.id,

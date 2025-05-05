@@ -1,4 +1,4 @@
-// issuer.js
+
 const jwt = require('jsonwebtoken');
 
 const SECRET_KEY = 'dummy-issuer-wallet-shared-key-1234567890';
