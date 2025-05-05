@@ -11,12 +11,6 @@ This prototype demonstrates **Verifiable Credential (VC) authentication** during
 - Validates VC type, basic proof, and disclosed claims.
 - Provides feedback on invalid or missing credentials.
 
-## Project Structure
-├── wallet.js # Simulates wallet presenting a VC
-├── routes/
-│ └── vcRequest.js # Express routes for verifying SD-JWT & JSON-LD VCs
-├── index.js # Express server setup
-
 ##  How to Run
 
 1. Install dependencies:
