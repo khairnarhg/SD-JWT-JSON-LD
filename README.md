@@ -21,7 +21,8 @@ This prototype demonstrates **Verifiable Credential (VC) authentication** during
    node index.js
 3. Run the wallet simulation:
    ```bach
-   node wallet.js
+   node wallet-SD-JWT.js
+   node wallet-JSON-LD.js
    
 ##  Next Steps for Production
 - Use real SD-JWT libraries instead of jsonwebtoken.
