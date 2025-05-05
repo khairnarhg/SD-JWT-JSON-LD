@@ -15,7 +15,7 @@ This prototype demonstrates **Verifiable Credential (VC) authentication** during
 ├── wallet.js # Simulates wallet presenting a VC
 ├── routes/
 │ └── vcRequest.js # Express routes for verifying SD-JWT & JSON-LD VCs
-├── server.js # Express server setup
+├── index.js # Express server setup
 
 ##  How to Run
 
